@@ -1,25 +1,17 @@
-// Esperar a que todo el documento HTML esté completamente cargado
 document.addEventListener('DOMContentLoaded', () => {
 
-  const formulario = document.getElementById('formEncuesta');
+  // 🎯 AQUÍ: Usamos tu ID exacto "MiFormulario"
+  const formulario = document.getElementById('MiFormulario');
 
   if (!formulario) {
-    console.error("❌ No se encontró ningún elemento con id='formEncuesta'");
+    console.error("❌ No se encontró el formulario 'MiFormulario'");
     return;
   }
 
   formulario.addEventListener('submit', async (e) => {
-    e.preventDefault(); // Evita que la página se recargue
+    e.preventDefault();
 
-    const noti = document.getElementById('notificacion');
-    const btn = document.getElementById('btnSubmit');
-    
-    if (btn) {
-      btn.innerText = 'Enviando...';
-      btn.disabled = true;
-    }
-
-    // 1. Recolectar datos ingresados por el padre
+    // ⚠️ REVISA que estos ID también coincidan con los que tú le pusiste a tus inputs:
     const datos = {
       nombre_acudiente: document.getElementById('nombre_acudiente').value,
       telefono: document.getElementById('telefono').value,
@@ -29,7 +21,6 @@ document.addEventListener('DOMContentLoaded', () => {
     };
 
     try {
-      // 2. Enviar datos al servidor
       const res = await fetch('/api/guardar', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
@@ -39,27 +30,13 @@ document.addEventListener('DOMContentLoaded', () => {
       const resultado = await res.json();
 
       if (res.ok) {
-        if (noti) {
-          noti.className = 'notificacion exito';
-          noti.innerText = '✅ ' + resultado.mensaje;
-          noti.style.display = 'block';
-        }
-        formulario.reset(); // Limpia los campos del formulario
+        alert('✅ ' + resultado.mensaje); // O tu mensaje bonito
+        formulario.reset();
       } else {
-        throw new Error(resultado.error || 'Error al guardar en el servidor');
+        alert('❌ ' + resultado.error);
       }
     } catch (err) {
-      if (noti) {
-        noti.className = 'notificacion error';
-        noti.innerText = '❌ ' + err.message;
-        noti.style.display = 'block';
-      }
-      console.error(err);
-    } finally {
-      if (btn) {
-        btn.innerText = 'Enviar Respuesta';
-        btn.disabled = false;
-      }
+      alert('❌ Error al enviar datos: ' + err.message);
     }
   });
 
