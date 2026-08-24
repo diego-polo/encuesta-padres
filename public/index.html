@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="estilos/index.css">
+  <title>Formulario para Padres de familia</title>
+</head>
+<body>
+ <div class="contenedor">
+ <div class="cabecera-logos">
+   <img src="https://upload.wikimedia.org/wikipedia/commons/d/d0/Logo_universidad_del_tolima_version_web.png?utm_source=es.wikipedia.org&utm_campaign=index&utm_content=original" alt="logo universidad del tolima" class="logo-Universidad">
+   <img src="https://upload.wikimedia.org/wikipedia/commons/d/d0/Logo_universidad_del_tolima_version_web.png?utm_source=es.wikipedia.org&utm_campaign=index&utm_content=original" alt="logo universidad del tolima" class="logo-Universidad">
+ </div>
+  <p>Universidad del Tolima</p>
+  <p>Maestría en Pedagogía y mediaciones tecnológicas-IDEAD</p>
+  <p>Investigador: Luisa Fernanda Briñez Forero </p>
+
+  <h2>Formulario para Padres de Familia</h2>
+   <form id="MiFormulario">
+
+     <div class="grupo">
+       <label>Nombre del Acudiente/Padre/Madre:</label>
+       <input type="text" id="Nombre_acudiente" required placeholder="Ej: maria perez" >
+     </div>
+     <div class="grupo">
+       <label>Nombre del Estudiante:</label>
+       <input type="text" id="Nombre_estudiante" required placeholder="ej: pepito perez">
+     </div>
+
+     <div class="grupo">
+       <label>Grado del estudiante</label>
+      <select id="grado">
+        <option value="">---grupo del estudiante----</option>
+        <option value="Preescolar">Preescolar</option>
+        <option value="Primero">1°</option>
+        <option value="segundo">2°</option>
+        <option value="Tercero">3°</option>
+        <option value="cuarto">4°</option>
+        <option value="quinto">5°</option>
+      </select>
+     </div>
+
+     <div class="grupo">
+       <label>¿con que frecuencia su hijo realiza actividades de lectura en casa? ¿qué tipo de texto prefiere leer su hijo?</label>
+       <textarea id="mensaje" rows="3" required></textarea>
+     </div>
+
+     <div class="grupo">
+       <label>-	¿su hijo utiliza dispositivos tecnológicos para leer? ¿considera que los medios tecnológicos pueden ayudar a mejorar la compresión lectora?</label>
+       <textarea id="mensaje" rows="3" requierd></textarea>
+     </div>
+
+     <div class="grupo">
+       <label>-	¿cree que la poesía puede ayudar a mejorar la compresión lectora? ¿Cómo? </label>
+       <textarea id="mensaje" rows="3" required></textarea>
+     </div>
+
+     <div class="grupo">
+       <label>-	¿le gustaría que su hijo(a) aprendiera poesía a través de videos, audios o aplicaciones digitales? </label>
+       <textarea id="mensaje" rows="3" required></textarea>
+     </div>
+
+     <div class="grupo">
+       <label>¿Cuál es el libro de poesía que ha leído recientemente mediada por TIC en casa con su hijo?</label>
+       <textarea id="mensaje" rows="3" required></textarea>
+     </div>
+
+     <div class="grupo">
+       <label>¿estaría dispuesto (a) a apoyar las actividades digitales de la poesía para mejorar la comprensión lectora?</label>
+       <textarea id="mensaje" rows="3" required></textarea>
+     </div>
+
+     <button class="submit">Enviar</button>
+
+    </form>
+
+     <div id="mensajeAlerta" style="display: none;" class="alerta"></div>
+  </div>
+  <script src="logica/index.js"></script>
+</body>
+</html>

@@ -1,0 +1,16 @@
+    body { font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; background: #f4f6f9; padding: 20px; margin: 0; }
+    .caja-login { max-width: 360px; margin: 80px auto; background: white; padding: 30px; border-radius: 10px; box-shadow: 0 4px 15px rgba(0,0,0,0.1); text-align: center; }
+    .caja-login h3 { margin-top: 0; color: #2c3e50; }
+    input[type="password"] { width: 100%; padding: 12px; margin: 15px 0; border: 1px solid #ccc; border-radius: 6px; box-sizing: border-box; font-size: 14px; }
+    button { padding: 12px 20px; background: #2c3e50; color: white; border: none; border-radius: 6px; cursor: pointer; font-weight: bold; font-size: 14px; width: 100%; }
+    button:hover { background: #1a252f; }
+    
+    #panelDatos { display: none; max-width: 1000px; margin: 20px auto; background: white; padding: 25px; border-radius: 10px; box-shadow: 0 4px 15px rgba(0,0,0,0.08); }
+    .btn-descargar { width: auto; background: #27ae60; margin-bottom: 20px; display: inline-block; }
+    .btn-descargar:hover { background: #219150; }
+    
+    table { width: 100%; border-collapse: collapse; margin-top: 10px; }
+    th, td { border: 1px solid #e1e8ed; padding: 12px; text-align: left; font-size: 14px; }
+    th { background: #2c3e50; color: white; font-weight: 600; }
+    tr:nth-child(even) { background: #f8fafc; }
+    tr:hover { background: #f1f5f9; }

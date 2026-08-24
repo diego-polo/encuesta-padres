@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="estilos/admin.css">
+  <title>Panel Admin</title>
+</head>
+<body>
+  
+  <!-- 1. Formulario de contraseña -->
+  <div id="seccionLogin" class="caja-login">
+    <h3>🔒 Acceso Administrador</h3>
+    <p style="color: #666; font-size: 14px;">Ingresa la contraseña para ver las respuestas de SQL:</p>
+    <input type="password" id="inputClave" placeholder="Escribe tu contraseña..." required>
+    <button onclick="iniciarSesion()">Ingresar al Panel</button>
+    <p id="errorLogin" style="color: #e74c3c; display: none; margin-top: 15px; font-weight: bold;"></p>
+  </div>
+  <!-- 2. Tabla privada de respuestas -->
+  <div id="panelDatos">
+    <h2>📋 Respuestas de los Padres</h2>
+    <button class="btn-descargar" onclick="descargarExcel()">📥 Descargar en Excel (.CSV)</button>
+    
+    <table>
+      <thead>
+        <tr>
+          <th>ID</th>
+          <th>Acudiente</th>
+          <th>Teléfono</th>
+          <th>Estudiante</th>
+          <th>Grado</th>
+          <th>Mensaje / Observaciones</th>
+          <th>Fecha</th>
+        </tr>
+      </thead>
+      <tbody id="cuerpoTabla"></tbody>
+    </table>
+  </div>
+
+  <script src="logica/admin.js"></script>
+</body>
+</html>
