@@ -1,42 +1,39 @@
 document.addEventListener('DOMContentLoaded', () => {
 
-  // 🎯 AQUÍ: Usamos tu ID exacto "MiFormulario"
   const formulario = document.getElementById('MiFormulario');
 
   if (!formulario) {
-    console.error("❌ No se encontró el formulario 'MiFormulario'");
+    console.error("❌ No se encontró el formulario con id='MiFormulario'");
     return;
   }
 
   formulario.addEventListener('submit', async (e) => {
-    e.preventDefault();
+    e.preventDefault(); // Evita recargar la página
 
-    // ⚠️ REVISA que estos ID también coincidan con los que tú le pusiste a tus inputs:
-    const datos = {
-      nombre_acudiente: document.getElementById('nombre_acudiente').value,
-      telefono: document.getElementById('telefono').value,
-      nombre_estudiante: document.getElementById('nombre_estudiante').value,
-      grado: document.getElementById('grado').value,
-      mensaje: document.getElementById('mensaje').value
-    };
+    // 🚀 MAGIA: FormData recoge automáticamente todos los campos del formulario sin importar los ID
+    const formData = new FormData(formulario);
+    const datos = Object.fromEntries(formData.entries());
+
+    console.log("📦 Datos que se van a enviar:", datos);
 
     try {
-      const res = await fetch('/api/guardar', {
+      const respuesta = await fetch('/api/guardar', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify(datos)
       });
 
-      const resultado = await res.json();
+      const resultado = await respuesta.json();
 
-      if (res.ok) {
-        alert('✅ ' + resultado.mensaje); // O tu mensaje bonito
-        formulario.reset();
+      if (respuesta.ok) {
+        alert('✅ ' + resultado.mensaje);
+        formulario.reset(); // Limpia los campos
       } else {
-        alert('❌ ' + resultado.error);
+        alert('❌ Error: ' + (resultado.error || 'No se pudo guardar'));
       }
-    } catch (err) {
-      alert('❌ Error al enviar datos: ' + err.message);
+    } catch (error) {
+      alert('❌ Error de conexión con el servidor: ' + error.message);
+      console.error(error);
     }
   });
 
